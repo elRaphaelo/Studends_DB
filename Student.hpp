@@ -16,7 +16,8 @@ public:
    
     void show();
     int getIndex() const;
-
+    long getPesel() const;
+    string getlastN() const;
 
 private:
 

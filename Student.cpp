@@ -1,5 +1,7 @@
 #include "Student.hpp"
 #include <iostream>
+#include <iomanip>
+
 
 using namespace std;
 
@@ -12,6 +14,7 @@ Student::Student(const string & firstN,
     
     : firstN_(firstN)
     , lastN_(lastN)
+    , addres_(addres)
     , index_(index)
     , pesel_(pesel)
 {}
@@ -21,7 +24,15 @@ int Student::getIndex() const
     return index_;
 }
 
+long Student::getPesel() const
+{
+    return pesel_;
+}
 
+string Student::getlastN() const
+{
+    return lastN_;
+}
 
 /*void Student::add()
     {   
@@ -40,8 +51,33 @@ int Student::getIndex() const
 
     }
 
-void Student::show()
+void Student::show2()
 {
-    cout<<"Imie: "<<firstN<<" || Naziwsko: "<<lastN<<" || Nr. Pesel: "<<pesel<<" || Adres: "<<addres<<endl;
+    cout<<"Imie: "<<firstN_<<" || Naziwsko: "<<lastN_<<" || Nr. Pesel: "<<pesel_<<" || Adres: "<<addres_<<" || Indeks: "<<index_<<endl;
 
 }*/
+
+
+void Student::show(){
+    cout<<left    
+        <<setw(10)<<firstN_<<" || "
+        <<setw(10)<<lastN_<<" || "
+        <<setw(11)<<pesel_<<" || "
+        <<setw(10)<<addres_<<" || "
+        <<setw(7)<<index_<<endl<<endl;
+}
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+

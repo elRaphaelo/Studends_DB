@@ -11,8 +11,13 @@ int main()
     db.addStudent(rafal);
     Student andrzej("Andrzej", "Kowalski", "Sosnowiec", 120000, 82022987654);
     db.addStudent(andrzej);
-    sortBy_Index();
-    //db.removeStudent(120001); main.cpp:15:8: error: ‘class Database’ has no member named ‘removeStudent’; did you mean ‘addStudent’?
+    Student wiola("Wiola", "EM", "Wroclaw", 153454, 89100201678);
+    db.addStudent(wiola);
+    db.showDB();
+    db.searchBy_lastN("EM");
+    db.removeBy_Index(120000);
+    db.showDB();
+    db.searchBy_Pesel(89010101123);
 
 
 }
