@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ public:
             long pesel);
    
     void show();
+    string get_all_info() const;
     int getIndex() const;
     long getPesel() const;
     string getlastN() const;

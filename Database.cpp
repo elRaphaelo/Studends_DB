@@ -2,8 +2,12 @@
 #include <algorithm>
 #include <iterator>
 #include <iomanip>
+#include<fstream>
+#include<cstdlib>
 
 using namespace std;
+
+
 
 void Database::addStudent(const Student & student)
 {
@@ -23,12 +27,9 @@ void Database::showDB(){
     db_header();
         
     for (auto & student : students_){
-        student.show();
+    cout<<student.get_all_info();
     }
 }
-
-
-//***sortowanie***
 
 void Database::sortBy_Index()
 {
@@ -51,34 +52,26 @@ void Database::sortBy_Pesel()
     });
 }
 
-//***wyszukiwanie***
-
-// w funkcji ponizej wzorowalem sie na kims innym, ale nie do konca rozumiem dlaczego to dziala, chodzi o samo utowrzenie funkcji (nie void, to pewnie sa jakies podstawy, ktore mi umykaja, i pozniej jesli dobrze rozumiem to zwracamy co na co wskazuje iterator?
-Student Database::searchBy_Pesel(long pesel){ 
+Students::iterator Database::searchBy_Pesel(long pesel){ 
 
     auto it = find_if(begin(students_),end(students_),[pesel](const auto & student){
         return student.getPesel()==pesel;
     });
     if (it != end(students_))
     {
-        return *it;
+        return it;
     }
-    
 }
 
-
-//wyszukiwanie tylko z wyswietleniem
 void Database::searchBy_lastN(string lastN){
     db_header();     
     for (auto & student : students_){  
         if (student.getlastN() == lastN)
         {           
-            student.show();
+            cout<<student.get_all_info();
         }
     }
 }
-
-//***usuwanie***
 
 void Database::removeBy_Index(int index)
 {
@@ -89,19 +82,43 @@ void Database::removeBy_Index(int index)
     {
         students_.erase(it);
     }
-
 }
 
-void Database::removeBy_Pesel(long pesel)
-{
-    auto it = find_if(begin(students_),end(students_),[pesel](const auto & student){
-        return student.getPesel()==pesel;
-    });
-    if (it != end(students_))
-    {
-        students_.erase(it);
-    }
+void Database::removeBy_Pesel(long pesel){
 
+    auto it = searchBy_Pesel(pesel);
+    students_.erase(it);
+}
+
+void Database::save_to_file(){
+    
+    fstream file_DB("baza danych.txt", file_DB.in | file_DB.out);
+    if(!file_DB.is_open()){
+        cout<<"error"<<endl;}
+    else{    
+    for (auto & student : students_){
+
+        file_DB<<student.get_all_info();
+        
+        }
+    }
+    file_DB.close();
+}
+
+void Database::load_from_file(){
+
+    fstream file_DB("baza danych.txt", file_DB.in | file_DB.out);
+    if(file_DB.good()==false){        
+        cout<<"file does not exists";
+        exit(0);
+    }
+    string lane;
+    while(!file_DB.eof()){
+        getline(file_DB, lane);
+        //Student NewStudent;
+        //addStudent NewStudent;
+    }  
+      
 }
 
 

@@ -66,6 +66,20 @@ void Student::show(){
         <<setw(10)<<addres_<<" || "
         <<setw(7)<<index_<<endl<<endl;
 }
+
+
+string Student::get_all_info() const{
+    stringstream ss;
+    ss<<left;   
+    ss<<setw(10)<<firstN_<<" || ";
+    ss<<setw(10)<<lastN_<<" || ";
+    ss<<setw(11)<<to_string(pesel_)<<" || ";
+    ss<<setw(10)<<addres_<<" || ";
+    ss<<setw(7)<<to_string(index_);
+    ss<<endl;
+    return ss.str();
+}
+ 
      
 
 

@@ -14,10 +14,11 @@ int main()
     Student wiola("Wiola", "EM", "Wroclaw", 153454, 89100201678);
     db.addStudent(wiola);
     db.showDB();
-    db.searchBy_lastN("EM");
-    db.removeBy_Index(120000);
+    //db.searchBy_lastN("EM");
+    db.removeBy_Pesel(89010101123);
     db.showDB();
-    db.searchBy_Pesel(89010101123);
+    db.save_to_file();
+    //db.searchBy_Pesel(89010101123);
 
 
 }
