@@ -20,7 +20,8 @@ void Database::db_header(){
         <<setw(10)<<"Nazwisko:"<<" || "
         <<setw(11)<<"Pesel:"<<" || "
         <<setw(10)<<"Adres:"<<" || "
-        <<setw(7)<<"Indeks:"<<endl<<"----------------------------------------------------------------"<<endl;
+        <<setw(7)<<"Indeks:"<<" || "
+        <<setw(6)<<"Plec:"<<endl<<"----------------------------------------------------------------"<<endl;
 }
 
 void Database::showDB(){
@@ -108,15 +109,13 @@ void Database::save_to_file(){
 void Database::load_from_file(){
 
     fstream file_DB("baza danych.txt", file_DB.in | file_DB.out);
-    if(file_DB.good()==false){        
+    if(not file_DB.good()){        
         cout<<"file does not exists";
         exit(0);
     }
     string lane;
     while(!file_DB.eof()){
         getline(file_DB, lane);
-        //Student NewStudent;
-        //addStudent NewStudent;
     }  
       
 }

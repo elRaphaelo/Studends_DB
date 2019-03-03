@@ -14,8 +14,6 @@ class Database
 {
 public:
     
-    void db_header();
-
     void sortBy_Index();
     void sortBy_lastN();
     void sortBy_Pesel();
@@ -35,4 +33,5 @@ public:
 
 private:
     Students students_;
+    void db_header();
 };

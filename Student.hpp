@@ -4,6 +4,8 @@
 
 using namespace std;
 
+enum Gender: const char {m  , f};
+
 class Student
 {
 
@@ -13,13 +15,15 @@ public:
             const string & lastN,
             const string & addres,
             int index,
-            long pesel);
+            long pesel,
+            const Gender gender);
    
     void show();
     string get_all_info() const;
     int getIndex() const;
     long getPesel() const;
     string getlastN() const;
+    Gender getGender() const;
 
 private:
 
@@ -27,7 +31,8 @@ private:
     string lastN_;
     string addres_;
     int index_;
-    long pesel_;   
+    long pesel_;
+    Gender gender_;   
 
 };
 
