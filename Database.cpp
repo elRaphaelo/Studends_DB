@@ -18,9 +18,9 @@ void Database::db_header(){
     cout<<left    
         <<setw(10)<<"Imie: "<<" || "
         <<setw(10)<<"Nazwisko:"<<" || "
-        <<setw(11)<<"Pesel:"<<" || "
         <<setw(10)<<"Adres:"<<" || "
         <<setw(7)<<"Indeks:"<<" || "
+        <<setw(11)<<"Pesel:"<<" || "      
         <<setw(6)<<"Plec:"<<endl<<"----------------------------------------------------------------"<<endl;
 }
 
@@ -106,18 +106,52 @@ void Database::save_to_file(){
     file_DB.close();
 }
 
-void Database::load_from_file(){
 
-    fstream file_DB("baza danych.txt", file_DB.in | file_DB.out);
-    if(not file_DB.good()){        
+void Database::load_from_file(){
+    
+    string filename = "baza danych.txt";
+    ifstream istrm(filename, std::ios::in);
+    
+    if (!istrm.is_open()){
         cout<<"file does not exists";
-        exit(0);
+        exit(0);}
+    else{
+
+        string lane;
+        while(!istrm.eof())
+        {
+            getline(istrm,lane);
+            vector<string> data = changeString(lane);
+            for (int i = 0; i < data.size(); i++) {
+                cout << data.at(i) << ' ';
+            }
+            cout<<endl;
+            Student* student = new Student(data);
+            addStudent(student);
+        }
     }
-    string lane;
-    while(!file_DB.eof()){
-        getline(file_DB, lane);
-    }  
-      
+
 }
+
+vector<string> Database::changeString(string lane)
+{
+    string::size_type pos;
+    vector<string> words;
+    while(lane.size() != 0)
+    { 
+        pos = lane.find("|");
+        words.emplace_back(lane.substr(0,pos));
+        lane.erase(0,pos+1);
+    }
+    return words;
+}
+
+
+
+
+
+
+
+
 
 

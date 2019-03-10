@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <sstream>
+#include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -19,6 +21,7 @@ public:
             const Gender gender);
    
     void show();
+    Student(vector<string> data);
     string get_all_info() const;
     int getIndex() const;
     long getPesel() const;

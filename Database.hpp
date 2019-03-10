@@ -27,6 +27,7 @@ public:
     void showDB();
     void load_from_file();
     void save_to_file();
+    vector<string>changeString(string line);
 
     void change_address_By_Pesel(long pesel);
     void addStudent(const Student & student);

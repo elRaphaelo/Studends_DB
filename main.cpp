@@ -13,10 +13,16 @@ int main()
     db.addStudent(andrzej);
     Student wiola("Wiola", "EM", "Wroclaw", 153454, 89100201678, Gender::f);
     db.addStudent(wiola);
+    db.save_to_file();
+    cout << "\t cala baza: \t \n";
     db.showDB();
     db.removeBy_Pesel(89010101123);
+    cout << "\t po usunieciu: \t \n";
     db.showDB();
-    db.save_to_file();
+    cout << "\t z pliku: \t \n";
+    db.load_from_file();
+    //cout << "\n \t After loading from file: \t \n \n";
+    //db.showDB();
 
 
 
